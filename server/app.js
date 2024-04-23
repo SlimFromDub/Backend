@@ -1,29 +1,31 @@
-const express = require("express");
+const express = require('express');
 const cors = require("cors");
 const app = express();
-const port = 8000;
+const port = 3000;
 
-const eventController = require("./controller/event");
 const userController = require("./controller/user");
-const attendanceController = require("./controller/attendance");
-const messageController = require("./controller/message");
-const noteController = require("./controller/note");
+app.use("/user", userController);
+const userController = require("./controller/alergen");
+app.use("/alergen", userController);
+const userController = require("./controller/comment");
+app.use("/comment", userController);
+const userController = require("./controller/cuisine");
+app.use("/cuisine", userController);
+const userController = require("./controller/rating");
+app.use("/rating", userController);
+const userController = require("./controller/recipe");
+app.use("/recipe", userController);
 
-app.use(express.json()); // podpora pro application/json
-app.use(express.urlencoded({ extended: true })); // podpora pro application/x-www-form-urlencoded
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
-app.use("/event", eventController);
-app.use("/user", userController);
-app.use("/attendance", attendanceController);
-app.use("/message", messageController);
-app.use("/note", noteController);
+app.get('/', (req, res) => {
+  res.send('Hello World2!')
+})
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+  console.log(`Example app listening on port ${port}`)
+})
