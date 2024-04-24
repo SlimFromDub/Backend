@@ -16,8 +16,17 @@ const schema = {
     email: { type: "string", format: "email" },
     password: { type: "string", format: "password"},
     registrationDate: { type: "date", format: "date"},
+    deleted: { type: "boolean"},
+    blocked: { type: "boolean"},
+    roleList: {
+      "type": "object",       
+      "properties": 
+      {
+      name: { type: "string"},
+      }
+}
   },
-  required: ["firstName","lastName","password", "email"],
+  required: ["id","password","firstName","lastName","email"],
   additionalProperties: false,
 };
 
